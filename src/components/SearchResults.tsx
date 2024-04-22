@@ -14,14 +14,14 @@ interface Props {
 
 export default function SearchResults({ searchResults, looking, looked, error, className, lightMode, font }: Props) {
   return (
-    <>
+    <main>
     {
       looking ? <Looking className={className} />
         : !looked ? <div></div>
           : error.happened ? <ErrorHappened error={error} className={className}/>
             : <Results searchResults={searchResults} className={className} lightMode={lightMode} font={font}/>
     }
-    </>
+    </main>
   )
 }
 

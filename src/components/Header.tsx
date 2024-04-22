@@ -79,7 +79,7 @@ const Toggle = styled.label`
   }
 `
 
-const Container = styled.header`
+const Container = styled.div`
   display: flex;
   margin-left: 24px;
   margin-top: 24px;
