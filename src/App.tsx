@@ -5,12 +5,27 @@ import Header from "./components/Header";
 import { initialState, reducer } from "./libs";
 import { toClass } from "./libs/types";
 
-async function search(text: string, dispatch: React.Dispatch<Action>) {
-  dispatch({ type: DispatchAction.ChangeLooking, data: true });
+async function fetchMeaning(text: string): Promise<any[]> {
   const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`);
   const obj = await res.json();
+  return [res.ok, obj];
+}
+
+function changeFont(font: Font, dispatch: React.Dispatch<Action> ) {
+  dispatch({ type: DispatchAction.ChangeFont, data: font });
+}
+
+function setupHTML(html: HTMLHtmlElement, lightmode: boolean) {
+  html.style.backgroundColor = !lightmode ? "#050505" : "white";
+  html.style.color = !lightmode ? "white" : "#2d2d2d";
+  html.style.transition = '0.4s';
+}
+
+async function search(text: string, dispatch: React.Dispatch<Action>) {
+  dispatch({ type: DispatchAction.ChangeLooking, data: true });
+  const [ok, obj] = await fetchMeaning(text);
   
-  if (!res.ok) {
+  if (!ok) {
     dispatch({ type: DispatchAction.ChangeError, data: {
       happened: true,
       message: obj.message,
@@ -26,20 +41,12 @@ async function search(text: string, dispatch: React.Dispatch<Action>) {
   dispatch({ type: DispatchAction.ChangeLooked, data: true });
 }
 
-function changeFont(font: Font, dispatch: React.Dispatch<Action> ) {
-  dispatch({ type: DispatchAction.ChangeFont, data: font });
-}
-
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const html = document.querySelector("html");
-    if (html) {
-      html.style.backgroundColor = !state.lightMode ? "#050505" : "white";
-      html.style.color = !state.lightMode ? "white" : "#2d2d2d";
-      html.style.transition = '0.4s';
-    }
+    if (html) setupHTML(html, state.lightMode);
   }, [state.lightMode]);
 
   return (
