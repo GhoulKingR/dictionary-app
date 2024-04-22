@@ -21,7 +21,7 @@ function Header({search, lightMode, toggleLightMode, changeFont, font}: Props) {
           <SelectFont changeFont={changeFont} font={font} lightMode={lightMode}/>
           <Toggle>
             <input type="checkbox" checked={!lightMode} onChange={toggleLightMode}/>
-            <div></div>
+            <span></span>
           </Toggle>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
             <path
@@ -47,8 +47,9 @@ const Toggle = styled.label`
     display: none;
   }
 
-  div {
+  span {
     width: 40px;
+    display: inline-block;
     height: 20px;
     background-color: #757575;
     border-radius: 10px;
@@ -57,7 +58,7 @@ const Toggle = styled.label`
     -webkit-transition: .4s;
   }
 
-  div::before {
+  span::before {
     width: 14px;
     height: 14px;
     position: absolute;
@@ -70,11 +71,11 @@ const Toggle = styled.label`
     -webkit-transition: .4s;
   }
 
-  input:checked + div {
+  input:checked + span {
     background-color: #A445ED;
   }
 
-  input:checked + div:before {
+  input:checked + span:before {
     left: 23px
   }
 `
