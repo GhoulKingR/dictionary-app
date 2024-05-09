@@ -26,7 +26,3 @@ npm i
 # run the development server
 npm run dev
 ```
-
-Finally, open the url that the terminal shows you. In this case it's `http://localhost:5173/dictionary-app`
-
-![Screenshot](https://github.com/GhoulKingR/dictionary-app/assets/87097037/1e0fe6f8-576f-4e6e-9aad-3d4226e7a3d2)
