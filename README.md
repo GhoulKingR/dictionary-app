@@ -4,7 +4,7 @@
 
 A web application that allows you to search for the meaning of words. It only works in English, and uses the API from https://dictionaryapi.dev to find meanings of words.
 
-This app was built using TypeScript, Vite, and React.js.
+This app was built using TypeScript, JavaScript, Styled components, and React.js.
 
 Reference links:
 * Frontendmentor exercise page: https://www.frontendmentor.io/solutions/dictionary-app-U99fXOp180
