@@ -2,7 +2,7 @@
 
 ![Screenshot](./assets/screenshot.png)
 
-This dictionary web app only works in English. The app workd with a dictionary API from https://dictionaryapi.dev.
+A web application that allows you to search for the meaning of words. It only works in English, and uses the API from https://dictionaryapi.dev to find meanings of words.
 
 This app was built using TypeScript, Vite, and React.js.
 
